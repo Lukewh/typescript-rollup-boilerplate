@@ -2,11 +2,20 @@
   "name": "typescript-rollup-boilerplate",
   "version": "1.0.0",
   "scripts": {
-    "build": "rollup -c ./config/rollup.config.js"
+    "build": "rollup -c ./config/rollup.config.js",
+    "docs": "typedoc --target ES6 --theme minimal --out docs src/js",
+    "install": "typings install",
+    "test": "mocha --require test/setup/setup.js test/*Test.js",
+    "pretest": "tsc test/*Test.ts --module commonjs",
+    "posttest": "rm src/**/*.js; rm test/*.js"
   },
   "dependencies": {
+    "chai": "^3.5.0",
+    "jsdom": "^9.6.0",
+    "mocha": "^3.1.0",
     "rollup": "^0.36.1",
     "rollup-plugin-typescript": "^0.8.1",
+    "typedoc": "^0.4.5",
     "typescript": "^2.0.3"
   }
 }
